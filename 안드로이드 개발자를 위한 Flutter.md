@@ -12,31 +12,30 @@ title: Android 개발자들을 위한 Flutter
 (그리고 iOS)과 소통(통신)하는 플러그인 시스템을 가지고 있습니다.  당신이 Android 숙련자라면, Flutter를
 사용하는데 모든 것을 다시 배울 필요는 없습니다
 
-이 문서는 Flutter 에 뛰어 들고, 너의 가장 필요적합한 질문들을 찾는 것에 요리 책처럼 사용되어 질 수 있습니다. 
+이 문서는 당신이 Flutter를 배우는데 가장 필요적합한 질문들을 찾는 데에 요리를 배울 때 요리책처럼 유용하게 사용할 수 있습니다.
 
 ## Views
 
 ### Flutter에서 `View` 와 동등한 것은 무엇인가요? 
 
 {{site.alert.secondary}}
-How is react-style, or _declarative_, programming different than the
-traditional imperative style?
-For a comparison, see [Introduction to declarative
-UI](/docs/get-started/flutter-for/declarative).
+반응형이나 선언형 프로그래밍은 전통적인 명령형 프로그래밍과 어떻게 다를까요? 
+이 [문서](/docs/get-started/flutter-for/declarative) (선언형 UI란 무엇인가)로 가시면 비교사항을 보실 수 있습니다.
 {{site.alert.end}}
 
-In Android, the `View` is the foundation of everything that shows up on the
-screen. Buttons, toolbars, and inputs, everything is a View.
-In Flutter, the rough equivalent to a `View` is a `Widget`.
-Widgets don't map exactly to Android views, but while you're getting
-acquainted with how Flutter works you can think of them as
-"the way you declare and construct UI".
+Android에서 는 화면에서 볼 수 있는 모든 것의 토대는 `View`입니다. 버튼, 툴바, 인풋 등 모든 게 View죠.
+Flutter에서는 `Widget`이 Android의 `View`와 같은 역할을 합니다.
+물론 두 개가 완전히 똑같은 것은 아니지만, Flutter에 익숙해지시는 동안에는 "UI를 선언하고 생성하는 방법"이라고 생각하시면 됩니다.
 
-However, these have a few differences to a `View`. To start, widgets have a
+`Widget`과 `View`의 몇 가지 차이점을 보자면, 수명을 먼저 볼 수 있습니다.
+Widget들은 변경 불가능(immutable)하고 변경이 필요할 때까지만 존재합니다.
+Widget이나 widget들의 상태가 변경될 때마다 Flutter의 프레임워크는 새로운 widget 인스턴스 트리를 생성합니다.
+Android의 view가 한 번 생성되면 `invalidate`가 선언될 때까지 재생성이 안되는 것과는 비교되는 사항입니다.
+(However, these have a few differences to a `View`. To start, widgets have a
 different lifespan: they are immutable and only exist until they need to be
 changed. Whenever widgets or their state change, Flutter’s framework creates
 a new tree of widget instances. In comparison, an Android view is drawn once
-and does not redraw until `invalidate` is called.
+and does not redraw until `invalidate` is called.)
 
 Flutter’s widgets are lightweight, in part due to their immutability.
 Because they aren't views themselves, and aren't directly drawing anything,
